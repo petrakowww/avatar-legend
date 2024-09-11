@@ -3,8 +3,6 @@
 /workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-# Ignore dump BD
-/avatar.sql/
 # Ignore video public
 /src/public/video/
 # Ignore image public

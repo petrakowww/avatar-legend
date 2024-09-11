@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Ignore dump BD
+/avatar.sql/
+# Ignore video public
+/public/video/
+# Ignore image public
+/public/img/

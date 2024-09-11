@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора</title>
+    <link rel="stylesheet" href="/css/admin/admin.css">
+</head>
+<body>
+<%- include('../patterns_views/header.ejs') %>
+<div class="admin-main-wrapper">
+    <div class="admin-control-panel">
+        <button data-panel="blockSerialPanel">Панель управления сериалом</button>
+        <button data-panel="blockSeasonsPanel">Панель управления сезонами</button>
+        <button data-panel="blockUsersPanel">Панель управления пользователями</button>
+    </div>
+    <div id="blockSerialPanel" class="panel">
+        <div class="previewImageContain">
+            <h1>Выберите новое изображение</h1>
+            <div id="PreviewImageFileAvatar">
+                <div class="overlay"></div>
+                <img src="<%= series.preview_series %>" alt="Preview Image Avatar" id="previewImage">
+                <span class="text-overlay">Выбрать файл</span>
+                <input type="file" id="fileInputImageSeriesPreview" class="file-input" accept="image/*">
+            </div>
+            <button id="saveSeriesDetails">Сохранить изменения</button>
+            <div id="informationSeriesChanges">
+                <span id="saveSeriesImagesInfo"></span>
+                <span id="saveSeriesDetailsInfo"></span>
+            </div>
+        </div>
+        <div id="SeriesSettingAvatar">
+            <div class="series-details">
+                <label for="seriesId">
+                    <span>ID:</span>
+                    <input type="text" id="seriesId" value="<%= series.id %>" readonly>
+                </label>
+                <label for="seriesNameTitle">
+                    <span>Название:</span>
+                    <input type="text" id="seriesNameTitle" value="<%= series.title %>">
+                </label>
+                <label for="seriesDescription">
+                    <span>Описание:</span>
+                    <textarea id="seriesDescription"><%= series.description %></textarea>
+                </label>
+                <label for="seriesRating">
+                    <span>Рейтинг:</span>
+                    <input type="number" id="seriesRating" step="0.01" max="10" value="<%= series.rating %>" readonly>
+                </label>
+                <label for="seriesRelease">
+                    <span>Дата выпуска:</span>
+                    <input type="date" id="seriesRelease" value="<%= toLocaleDateString(series.release_date) %>">
+                </label>
+                <label for="seriesGenres">
+                    <span>Жанры:</span>
+                    <input type="text" id="seriesGenres" value="<%= series.genres %>">
+                </label>
+                <label for="seriesAuthors">
+                    <span>Авторы:</span>
+                    <input type="text" id="seriesAuthors" value="<%= series.authors %>">
+                </label>
+                <label for="seriesCountry">
+                    <span>Страна:</span>
+                    <input type="text" id="seriesCountry" value="<%= series.country %>">
+                </label>
+                <label for="seriesStatus" class="statusSeriesBlock">
+                    <span>Статус:</span>
+                    <span class="checkboxStatusSeries">
+                        <label for="statusOngoing">Продолжается</label>
+                        <input type="radio" id="statusOngoing" name="seriesStatus" value="1" <%= series.status == 1 ? 'checked' : '' %>>
+                    </span>
+                    <span class="checkboxStatusSeries">
+                        <label for="statusEnded">Закончился</label>
+                        <input type="radio" id="statusEnded" name="seriesStatus" value="0" <%= series.status == 0 ? 'checked' : '' %>>
+                    </span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div id="blockSeasonsPanel" class="panel">
+        <div class="seasonPanel">
+            <button id="openCloseAddSeason">Добавить сезон</button>
+            <button id="openCloseChangeSeasons">Изменить сезоны</button>
+        </div>
+        <div id="addSeasonInfo">
+            <div id="addSeasonId">
+                <div id="SeasonImageFileAvatar">
+                    <div class="overlay"></div>
+                    <img src="/img/seasons/default/default.jpg" alt="Preview Image Avatar" id="previewSeasonImage">
+                    <span class="text-overlay">Выбрать файл</span>
+                    <input type="file" id="fileInputImageSeasonPreview" class="file-input" accept="image/*">
+                </div>
+                <div class="season-fields">
+                    <label for="seriesSeasonIDAddId">
+                        <span>СЕРИАЛ ID:</span>
+                        <input type="text" id="seriesSeasonIDAddId" value="<%= series.id %>" readonly>
+                    </label>
+                    <label for="titleSeasonAddId">
+                        <span>Название сезона:</span>
+                        <input type="text" id="titleSeasonAddId" value="" placeholder="Введите название сезона">
+                    </label>
+                    <label for="uniqueNumberSeasonAddId">
+                        <span>Введите номер:</span>
+                        <input type="number" id="uniqueNumberSeasonAddId" value="" placeholder="Введите номер сезона">
+                    </label>
+                    <label for="descriptionTitleAddId">
+                        <span>Описание сезона:</span>
+                        <textarea id="descriptionTitleAddId" placeholder="Введите описание сезона"></textarea>
+                    </label>
+                    <label for="releaseDateId">
+                        <span>Дата выхода сезона:</span>
+                        <input type="date" id="releaseDateId" value="" placeholder="Введите дату выхода">
+                    </label>
+                    <button id="addNewSeason">Добавит сезон</button>
+                </div>
+            </div>
+            <div id="informationSeasonAdd">
+                <p id="addNewSeasonImageInfo"></p>
+                <p id="addNewSeasonRequestInfo"></p>
+            </div>
+        </div>
+        <div id="changeSeasonsInfo">
+            <div id="seasonInfoContainer">
+                <% seasons.forEach((season) => { %>
+                    <div class="elementChangeSeason" id="seasonBlock_<%= season.id %>">
+                        <div class="controlEpisodes">
+                            <div class="seasonChangeImage">
+                                <div class="overlay"></div>
+                                <img src="<%= season.preview_image%>" alt="Preview Image Avatar" id="seasonPreviewImage_<%= season.id%>">
+                                <span class="text-overlay">Выбрать файл</span>
+                                <input type="file" id="fileInputSeasonImage_<%= season.id %>" class="file-input" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="changeSeasonInfo" id="seasonManagement_<%= season.id %>">
+                            <label for="serialId_<%= season.id %>">
+                                <span>СЕРИАЛ ID:</span>
+                                <input type="text" id="serialId_<%= season.id %>" value="<%= series.id %>" readonly>
+                            </label>
+                            <label for="seasonTitle_<%= season.id %>">
+                                <span>Название сезона:</span>
+                                <input type="text" id="seasonTitle_<%= season.id %>" value="<%= season.title %>" placeholder="Введите новое название сезона">
+                            </label>
+                            <label for="uniqueNumberSeasonAddId_<%= season.id %>">
+                                <span>Введите номер:</span>
+                                <input type="number" id="uniqueNumberSeasonAddId_<%= season.id %>" value="<%= season.unique_number %>" placeholder="Введите уникальный номер сезона">
+                            </label>
+                            <label for="seasonDescription_<%= season.id %>">
+                                <span>Описание сезона:</span>
+                                <textarea id="seasonDescription_<%= season.id %>" placeholder="Введите новое описание сезона"><%= season.description %></textarea>
+                            </label>
+                            <label for="countSeries_<%= season.id %>">
+                                <span>Количество серий:</span>
+                                <input type="number" id="countSeries_<%= season.id %>" placeholder="Серии" value="<%= season.episode_count %>" readonly>
+                            </label>
+                            <label for="seasonRelease_<%= season.id %>">
+                                <span>Дата выхода сезона:</span>
+                                <input type="date" id="seasonRelease_<%= season.id %>" value="<%= season.release_date ? toLocaleDateString(season.release_date) : '' %>" placeholder="Введите новую дату выхода">
+                            </label>
+                            <div class="informationSeasonChanges">
+                                <p id="seasonUpdatedInfo_<%= season.id %>"></p>
+                                <p id="seasonImageUpdatedInfo_<%= season.id %>"></p>
+                            </div>
+                            <input type="hidden" id="season_<%= season.id %>">
+                            <button class="changeSeason" id="changeSeasonButton_<%= season.id %>">Изменить сезон</button>
+                            <button class="switchToEpisodes" id="switchToEpisodesButton_<%= season.id %>">Управление сериями</button>
+                            <button class="deleteSeason" id="deleteSeasonButton_<%= season.id %>">Удалить сезон</button>
+                        </div>
+
+                        <div class="containerEpisodesSerial hidden" id="episodeManagement_<%= season.id %>">
+                            <button class="controlSeason switchToSeason" id="controlSeasonButton_<%= season.id %>">Вернуться к управлению сезоном</button>
+                            <div class="episode-add">
+                                <div>
+                                    <input type="time" placeholder="Продолжительность" id="episodeDurationInput_<%= season.id %>" />
+                                    <input type="file" id="episodeFileInput_<%= season.id %>" />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Название серии" id="episodeTitleInput_<%= season.id %>" />
+                                    <input type="date" placeholder="Дата выпуска" id="episodeReleaseDateInput_<%= season.id %>" />
+                                </div>
+                                <input type="text" placeholder="Описание" id="episodeDescriptionInput_<%= season.id %>" />
+                                <button class="add-episode" data-season-id="<%= season.id %>">Добавить</button>
+                            </div>
+
+                            <div class="episode-list">
+                                <% season.episodes.forEach((episode) => { %>
+                                    <div class="episode-item" id="episodeItem_<%= season.id %>_<%= episode.id %>">
+                                        <input type="text" id="episodeTitle_<%= season.id %>_<%= episode.id %>" value="<%= episode.title %>" />
+                                        <input type="time" id="episodeDuration_<%= season.id %>_<%= episode.id %>" value="<%= episode.duration %>" />
+                                        <input type="date" id="episodeReleaseDate_<%= season.id %>_<%= episode.id %>" value="<%= toLocaleDateString(episode.release_date) %>" />
+                                        <input type="file" id="episodeFile_<%= season.id %>_<%= episode.id %>" />
+                                        <input type="text" id="episodeDescription_<%= season.id %>_<%= episode.id %>" value="<%= episode.description %>" />
+                                        <input type="hidden" id="videoUrl_<%= season.id %>_<%= episode.id %>" value="<%= episode.video_url %>" />
+                                        <button class="edit-episode" id="editEpisodeButton_<%= season.id %>_<%= episode.id %>">Изменить</button>
+                                        <button class="delete-episode" id="deleteEpisodeButton_<%= season.id %>_<%= episode.id %>">Удалить</button>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+
+    </div>
+    <div id="blockUsersPanel" class="panel">
+        <div id="userContainerId">
+            <% users.forEach(user => { %>
+                <div class="user-element">
+                    <div class="user-info">
+                        <div>
+                            <span><b>Имя пользователя: </b></span><span class="username"><%= user.username %></span>
+                        </div>
+                        <div>
+                            <span><b>Почта: </b> </span><span class="email"><%= user.email %></span>
+                        </div>
+                        <div>
+                            <span><b>Дата создания: </b> </span><span class="created-at"><%= toLocaleDateString(user.created_at) %></span>
+                        </div>
+                    </div>
+                    <div class="user-actions">
+                        <button class="delete-user" id="deleteUser_<%= user.id %>">Удалить пользователя</button>
+                        <button class="show-comments" id="showComments_<%= user.id %>">Отобразить комментарии</button>
+                        <button class="show-feedback" id="showFeedback_<%= user.id %>">Обратная связь</button>
+                    </div>
+                    <div class="comments-panel hidden" id="commentsPanel_<%= user.id %>">
+                        <% user.reviews.forEach(review => { %>
+                            <div class="comment" id="comment_<%= review.id %>">
+                                <div class="comment-info">
+                                    <span class="comment-date"><%= toLocaleDateString(review.review_date) %></span>
+                                    <textarea class="comment-text" readonly><%= review.review_text %></textarea>
+                                </div>
+                                <div class="comment-actions">
+                                    <button class="delete-comment" id="deleteComment_<%= review.id %>">Удалить</button>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                    <div class="contacts-panel hidden" id="contactPanel_<%= user.id %>">
+                        <% user.callbacks.forEach(callback => { %>
+                            <div class="contact" id="contact_<%= callback.id %>">
+                                <div class="contact-info">
+                                    <span class="contact-date"><%= toLocaleDateString(callback.feedback_date) %></span>
+                                    <span class="contact-number"><%= callback.number%></span>
+                                    <textarea class="contact-text" readonly><%= callback.feedback_text %></textarea>
+                                </div>
+                                <div class="contact-actions">
+                                    <button class="delete-contact" id="deleteContact_<%= callback.id %>">Удалить</button>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/jQuery/jquery-3.7.1.min.js"></script>
+<script src="/js/admin/serial/updateSerialAjax.js"></script>
+<script src="/js/admin/utils/imageDownload.js"></script>
+<script src="/js/admin/utils/selectNecessaryPanel.js"></script>
+<script src="/js/admin/seasons/utils/switchSeasonTypeSetting.js"></script>
+<script src="/js/admin/switchSeasonEpisode.js"></script>
+<script src="/js/admin/seasons/addSeasonAjax.js"></script>
+<script src="/js/admin/seasons/delSeasonAjax.js"></script>
+<script src="/js/admin/seasons/updateSeasonAjax.js"></script>
+<script src="/js/admin/episodes/addEpisodeAjax.js"></script>
+<script src="/js/admin/episodes/editEpisodeAjax.js"></script>
+<script src="/js/admin/episodes/delEpisodeAjax.js"></script>
+<script src="/js/admin/user/utils/openFeedbackComments.js"></script>
+<script src="/js/admin/user/delUserAjax.js"></script>
+<script src="/js/admin/user/comments/delCommentsAjax.js"></script>
+<script src="/js/admin/user/feedback/delFeedbackAjax.js"></script>
+</body>
+</html>

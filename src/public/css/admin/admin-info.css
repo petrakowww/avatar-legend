@@ -1,0 +1,20 @@
+.informationSeasonChanges,
+#informationSeasonAdd,
+#informationSeriesChanges{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+#informationSeasonAdd{
+    margin: 20px 0 20px 20px;
+    text-align: left;
+}
+
+.informationSeasonChanges{
+    margin:0;
+    padding: 5px;
+}

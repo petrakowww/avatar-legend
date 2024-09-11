@@ -1,0 +1,122 @@
+@import "../general/reset.css";
+@import "../general/fonts.css";
+@import "../general/header.css";
+
+@import "index-preview.css";
+@import "index-buttons.css";
+@import "index-rating.css";
+
+body {
+    background-color: #ec0d0d;
+}
+
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.container-main {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.left-container {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.89);
+}
+
+.left-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+
+}
+
+.right-container {
+    color: #ffffff;
+    width: 40%;
+    padding: 20px;
+    background-color: rgba(106, 106, 106, 0.25);
+    border-radius:10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.89);
+}
+
+.right-container h1 {
+    margin-top: 0;
+    padding: 20px 20px 20px 0;
+    font-weight: 900;
+    font-size: 40px;
+}
+
+.information {
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.information span{
+    font-weight: 900;
+}
+
+.information p {
+    margin: 10px 0;
+}
+
+.bottom-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.bottom-container .season-header-info {
+    width: 100%;
+    border-bottom: 4px solid #000;
+    padding-bottom: 10px;
+    margin-top: 50px;
+    font-weight: 900;
+    color: #ffffff;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.bottom-container .description-seasons{
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.block-student-info {
+    display: none;
+    padding: 20px;
+    background-color: rgba(41, 41, 41, 0.32);
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.block-student-info div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.block-student-info .block-student-info-header {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.block-student-info p {
+    margin-top: 40px;
+    font-size: 20px;
+    font-weight: 300;
+}

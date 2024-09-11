@@ -1,0 +1,119 @@
+@import "../general/reset.css";
+@import "../general/fonts.css";
+
+body {
+    font-family: Roboto, sans-serif;
+    background-image: url('/img/auth/background_avatar.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.69);
+}
+
+.container {
+    background-color: rgba(184, 12, 15, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+    width: 500px;
+    max-width: 500px;
+}
+
+.block {
+    margin-bottom: 30px;
+}
+
+.block h2 {
+    padding: 0 20px 20px 20px;
+    font-weight: 900;
+    font-size: 32px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+button {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: 300;
+    color: #ffffff;
+}
+
+button {
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.64);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s linear;
+}
+
+button:hover {
+    background-color: #201208;
+}
+
+input::placeholder {
+    color: #c1c1c1;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+    border: 1px solid #ffffff;
+    background-color: rgba(64, 64, 64, 0.74);
+}
+
+.links{
+    margin-top: 10px;
+    font-weight: 300;
+}
+
+.links a{
+    color: #ffffff;
+    transition: 0.3s linear;
+}
+
+.links a:hover{
+    color: #c1c1c1;
+}
+
+#information-errors-block {
+    display: none;
+    margin-top: 20px;
+    border: 1px solid #f5c6cb;
+    color: #ffffff;
+    padding: 10px;
+    font-weight: 300;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+#information-errors-block ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#information-errors-block li {
+    text-align: left;
+}
+
+button:disabled{
+    background-color: rgba(74, 73, 73, 0.64);
+}

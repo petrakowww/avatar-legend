@@ -1,0 +1,71 @@
+@import "../general/reset.css";
+@import "../general/fonts.css";
+@import "../general/header.css";
+
+@import "episode-buttons.css";
+@import "episode-comments.css";
+body {
+    background-color: #ff0808;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.episode-container {
+    background-color: #000000;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 1000px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.77);
+}
+
+
+.offset-element {
+    height: 30px;
+    padding: 30px;
+}
+
+.episode-container h2 {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.episode-container p {
+    color: #ececec;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 300;
+    word-wrap: break-word;
+}
+
+.episode-container p strong {
+    color: #ececec;
+}
+
+.episode-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.episode-container a {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    border-radius: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.link-back{
+    text-align: center;
+}

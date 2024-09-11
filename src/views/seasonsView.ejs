@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все сезоны сериала</title>
+    <link rel="stylesheet" href="/css/seasons/seasons.css">
+</head>
+<body>
+<%- include('../patterns_views/header.ejs') %>
+<div class="container">
+    <% series.forEach(serie => { %>
+        <div class="series">
+            <h2 class="header-season"><%= serie.title %></h2>
+            <p class="description-seasons-header"><%= serie.description %></p>
+            <div class="seasons-preview-main">
+                <% serie.seasons.forEach(season => { %>
+                    <div class="season-block">
+                        <span>
+                            <a href="/current_season/<%= season.id %>">
+                            <img src="<%= season.preview_image %>" alt="Season <%= season.id %> Preview" class="season-image">
+                            </a>
+                        </span>
+                        <div class="season-info">
+                            <h3><%= season.title || "Не указано" %></h3>
+                            <p>Количество серий: <%= season.episode_count || "Неизвестно" %></p>
+                            <p>Дата выпуска: <%= toLocaleDateString(season.release_date, true) || "Неизвестен" %></p>
+                            <p>Описание: <%= season.description || "Отсутствует" %></p>
+                            <p>Количество просмотров: <%= season.view_count %></p>
+                            <p>Номер сезона: <%= season.unique_number %></p>
+                            <a href="/current_season/<%= season.id %>" class="watch-button">Перейти к просмотру</a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    <% }) %>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+#filters-button-main {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+#filters-button-main button {
+    padding: 10px 20px;
+    margin: 0 10px 0 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#filters-button-main button:hover {
+    background-color: rgba(0, 0, 0, 0.47);
+}
+
+#openInfoProject{
+    margin-top: 50px;
+    width: 100%;
+}
+
+#openInfoProject, #closeInfoProject{
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.71);
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.99);
+    transition: background-color 0.3s ease;
+    font-weight: 300;
+}
+
+#openInfoProject:hover,
+#closeInfoProject:hover,
+#sendRatingSeries:hover{
+    background-color: rgba(51, 51, 51, 0.55);
+}
+
+#sendRatingSeries{
+    border: 1px solid #ffffff;
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: rgba(32, 18, 8, 0.25);
+    transition: background-color 0.3s ease;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link rel="stylesheet" href="/css/contacts/contacts.css">
+</head>
+<body>
+<%- include('../patterns_views/header.ejs') %>
+<div class="wrapper">
+    <% if (session.user.userType === 'user') { %>
+        <div class="contact-container">
+            <h2>Свяжитесь с нами</h2>
+            <input type="hidden" id="user-id" value="<%= session.user.id %>">
+            <div>
+                <label for="username">Имя пользователя</label>
+                <input type="text" id="username" value="<%= session.user.username %>" readonly>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" value="<%= session.user.email %>" readonly>
+            </div>
+            <div>
+                <label for="number">Номер телефона</label>
+                <input type="text" id="number" placeholder="Ваш номер телефона" required>
+            </div>
+            <div>
+                <label for="feedback-text">Текст обращения</label>
+                <textarea id="feedback-text" placeholder="Ваше сообщение" required></textarea>
+            </div>
+            <button id="sendContactData">Отправить</button>
+            <div id="callback-info"></div>
+        </div>
+        <% } else if (session.user.userType === 'admin') { %>
+            <div class="admin-info">
+                <h2>Вы зашли как админ</h2>
+                <h3>Список обращений:</h3>
+                <ul>
+                    <% feedbackList.forEach(feedback => { %>
+                        <li>
+                            <p><strong>Имя:</strong> <%= feedback.username %></p>
+                            <p><strong>Email:</strong> <%= feedback.email %></p>
+                            <p><strong>Номер телефона:</strong> <%= feedback.number %></p>
+                            <p><strong>Текст обращения:</strong> <%= feedback.feedback_text %></p>
+                            <p><strong>Дата:</strong> <%= toLocaleDateString(feedback.feedback_date, true) %></p>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div>
+        <% } %>
+</div>
+
+<script src="/libs/jQuery/jquery-3.7.1.min.js"></script>
+<script src="/js/contacts/contacts.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+#blockSeasonsPanel{
+    display: flex;
+    flex-direction: column;
+}
+
+.seasonPanel{
+    padding: 20px 10px 10px 10px;
+}
+
+#addSeasonId{
+    height: 400px;
+    padding: 10px;
+    display: flex;
+}
+
+.seasonChangeImage,
+#SeasonImageFileAvatar{
+    height: 100%;
+}
+
+.controlEpisodes{
+    flex: 1;
+}
+
+.seasonChangeImage{
+    background-color: #550000;
+}
+
+#changeSeasonsInfo{
+    padding: 10px;
+}
+
+.elementChangeSeason{
+    padding: 10px;
+    height: 650px;
+    overflow-y: auto;
+    display: flex;
+    border-bottom: 2px solid #000000;
+}
+
+#seasonInfoContainer{
+    max-height: 100vh;
+    overflow-y: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.6);
+    border-radius: 10px;
+}
+
+
+

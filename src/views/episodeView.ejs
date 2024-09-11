@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= episode.episode_title %></title>
+    <link rel="stylesheet" href="/css/episode/episode.css">
+</head>
+<%- include('../patterns_views/header.ejs') %>
+<body>
+<div class="episode-container">
+    <div class="main-container-video">
+        <h2><%= episode.episode_title %></h2>
+        <p><strong>Описание:</strong> <%= episode.episode_description %></p>
+        <p><strong>Дата выпуска:</strong> <%= toLocaleDateString(episode.episode_release, true) %></p>
+        <p><strong>Продолжительность:</strong> <%= episode.episode_duration %></p>
+        <div class="video-wrapper">
+            <video controls>
+                <% if (episode.episode_video_url) { %>
+                    <% let videoExtensions = ['.mp4', '.mkv', '.avi']; %>
+                    <% let videoUrl = episode.episode_video_url.toLowerCase(); %>
+                    <% let isVideo = videoExtensions.some(ext => videoUrl.endsWith(ext)); %>
+                    <% if (isVideo) { %>
+                        <source src="<%= episode.episode_video_url %>" type="video/mp4">
+                        Ваш браузер не поддерживает элемент <code>video</code>.
+                    <% } else { %>
+                        <p>Формат видео не поддерживается</p>
+                    <% } %>
+                <% } else { %>
+                    <p>Видео недоступно</p>
+                <% } %>
+            </video>
+        </div>
+        <div class="navigation-buttons">
+            <% if (previousEpisode) { %>
+                <button id="prev-episode" data-season-id="<%= season %>" data-episode-id="<%= previousEpisode.id %>">Предыдущая серия</button>
+            <% } %>
+            <% if (nextEpisode) { %>
+                <button id="next-episode" data-season-id="<%= season %>" data-episode-id="<%= nextEpisode.id %>">Следующая серия</button>
+            <% } %>
+        </div>
+        <p class="link-back"><a href="/current_season/<%= season %>">Назад к сезону</a></p>
+    </div>
+</div>
+<% if (session.user) { %>
+    <% if (session.user.userType !== 'admin' && session.user.userType !== 'observer') { %>
+        <div class="comment-section-form-submit">
+            <input type="hidden" id="episode-id" value="<%= episode.episode_id %>">
+            <textarea id="comment-text" placeholder="Добавить комментарий..."></textarea>
+            <button id="submit-comment">Отправить</button>
+        </div>
+        <div class="comment-section" id="commentsUserList">
+            <h3 id="noRm">Ваши комментарии</h3>
+            <% if (commentsUser && commentsUser.length > 0) { %>
+                <ul>
+                    <% commentsUser.forEach(comment => { %>
+                        <li>
+                            <div class="comment-header">
+                                <div class="username"><%= comment.username %></div>
+                                <div class="comment-date"><%= toLocaleDateString(comment.review_date, true) %></div>
+                                <% if (comment.user_id === session.user.id) { %>
+                                    <button class="delete-comment" data-comment-id="<%= comment.id %>">Удалить</button>
+                                <% } %>
+                            </div>
+                            <div class="comment-text"><%= comment.review_text %></div>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p id="nonComments">Вы еще не оставили комментариев</p>
+            <% } %>
+        </div>
+        <div class="comment-section" id="commentsOthersList">
+            <h3>Остальные комментарии</h3>
+            <% if (commentsOthers && commentsOthers.length > 0) { %>
+                <ul>
+                    <% commentsOthers.forEach(comment => { %>
+                        <li>
+                            <div class="comment-header">
+                                <div class="username"><%= comment.username %></div>
+                                <div class="comment-date"><%= toLocaleDateString(comment.review_date, true) %></div>
+
+                            </div>
+                            <div class="comment-text"><%= comment.review_text %></div>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p>Другие пользователи еще не оставляли комментариев</p>
+            <% } %>
+        </div>
+    <% } else { %>
+        <div class="comment-section" id="commentsAdminList">
+            <h3>Все комментарии</h3>
+            <% if (comments && comments.length > 0) { %>
+                <ul>
+                    <% comments.forEach(comment => { %>
+                        <li>
+                            <div class="comment-header">
+                                <div class="username"><%= comment.username %></div>
+                                <div class="comment-date"><%= toLocaleDateString(comment.review_date, true) %></div>
+                            </div>
+                            <div class="comment-text"><%= comment.review_text %></div>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p>Нет комментариев для этого эпизода</p>
+            <% } %>
+        </div>
+    <% } %>
+<% } %>
+
+
+
+<div class="offset-element"></div>
+<script src="/libs/jQuery/jquery-3.7.1.min.js"></script>
+<script src="/js/episode/prevNextEpisode.js"></script>
+<script src="/js/episode/createUserCommentAjax.js"></script>
+<script src="/js/episode/delUserCommentAjax.js"></script>
+</body>
+</html>

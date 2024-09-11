@@ -1,0 +1,86 @@
+.seasonChangeImage,
+#SeasonImageFileAvatar,
+#PreviewImageFileAvatar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.89);
+}
+
+.seasonChangeImage img,
+#SeasonImageFileAvatar img,
+#PreviewImageFileAvatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.seasonChangeImage,
+#SeasonImageFileAvatar,
+#PreviewImageFileAvatar {
+    position: relative;
+    display: inline-block;
+}
+
+.seasonChangeImage input[type="file"],
+#SeasonImageFileAvatar input[type="file"],
+#PreviewImageFileAvatar input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.seasonChangeImage .overlay,
+#SeasonImageFileAvatar .overlay,
+#PreviewImageFileAvatar .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.seasonChangeImage:hover .overlay,
+#SeasonImageFileAvatar:hover .overlay,
+#PreviewImageFileAvatar:hover .overlay {
+    opacity: 1;
+}
+
+.seasonChangeImage .text-overlay,
+#SeasonImageFileAvatar .text-overlay,
+#PreviewImageFileAvatar .text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: 900;
+    font-size: 32px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.seasonChangeImage .text-overlay{
+    font-size: 20px;
+    text-align: center;
+}
+
+.seasonChangeImage:hover .text-overlay,
+#SeasonImageFileAvatar:hover .text-overlay,
+#PreviewImageFileAvatar:hover .text-overlay {
+    opacity: 1;
+}

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Аватар: легенда об Аанге - Главная страница</title>
+    <link rel="stylesheet" href="/css/index/index.css">
+</head>
+<%- include('../patterns_views/header.ejs') %>
+<body>
+<div id="wrapper" data-series-id="<%= series[0].id %>" data-user-id="<%= session.user.id %>">
+    <div class="main-container">
+        <div class="container-main">
+            <div class="left-container">
+                <img src='<%= series[0].preview_series %>' alt="Avatar Image Preview Series">
+            </div>
+            <div class="right-container">
+                <h1><%= series[0].title %></h1>
+                <div class="information">
+                    <p class="description"><%= series[0].description || "отсутсвует" %></p>
+                    <p class="genres"><span>Жанры:</span> <%= series[0].genres || "не указаны" %></p>
+                    <p class="authors"><span>Авторы:</span> <%= series[0].authors || "не указаны" %></p>
+                    <p class="country"><span>Страна:</span> <%= series[0].country || "не указана" %></p>
+                    <p class="count"><span>Количество серий:</span> <%= series[0].episode_count || "неизвестно" %></p>
+                    <p class="year"><span>Дата выпуска:</span> <%= toLocaleDateString(series[0].release_date, true) || "неизвестен" %></p>
+                    <p class="status"><span>Статус:</span> <%= series[0].status === 0 ? "Завершился" : series[0].status === 1 ? "Продолжается" : "Unknown" %></p>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-container">
+            <div id="ratingValue">
+                <p>Оценка сериала: <span id="valueRating"><%= series[0].rating %></span></p>
+                <% if (userRating && userRating[0] !== null) { %>
+                    <p class="rating-user">Ваша оценка: <span id="valueRatingYours"><%= JSON.stringify(userRating) %></span></p>
+                <% } %>
+            </div>
+            <div class="rating-serial-avatar">
+                <p>Добро пожаловать, <%= session.user.username === "observer" ? "Гость" : session.user.username %>!
+                    <% if (session.user.userType !== "admin") { %>
+                        <span>Оцените сериал!</span>
+                    <% } %>
+                </p>
+                <% if (session.user.userType === 'user') { %>
+                    <div>
+                        <label for="ratingSelectId">Оцените сериал:</label>
+                        <select name="rating" id="ratingSelectId">
+                            <% for (let i = 1; i <= 5; i++) { %>
+                                <option value="<%= i %>"><%= i %></option>
+                            <% } %>
+                        </select>
+                        <button id="sendRatingSeries">Отправить оценку</button>
+                    </div>
+                <% } %>
+            </div>
+            <div class="season-header-info">Смотрите все сезоны: <%=series[0].title%> </div>
+            <div class="description-seasons">
+                Готовьтесь к захватывающему путешествию сквозь времена и стихии! Спешите присоединиться к удивительным приключениям во вселенной Аватара.
+            </div>
+            <div id="filters-button-main">
+                <button id="filterYearSeries">Отфильтровать по году выпуска</button>
+                <button id="filterViewsSeries">Отфильтровать по просмотрам</button>
+                <button id="filterSeasonNumber">Отфильтровать по сезону</button>
+                <button id="toggleBlocks">Скрыть все записи</button>
+            </div>
+            <div class="seasons-preview-main">
+                <% series[0].seasons.forEach(season => { %>
+                    <a href="/current_season/<%= season.id %>" class="preview" data-season="<%= season.id %>">
+                        <img src="<%= season.preview_image %>" alt="Season <%= season.id %> Preview">
+                        <div class="season-info">
+                            <h3><%= season.title || "Не указано" %></h3>
+                            <p class="episode-count">Количество серий: <%= season.episode_count || "Неизвестно" %></p>
+                            <p class="release-year">Год выпуска: <%= toLocaleDateString(season.release_date, true) || "Неизвестен" %></p>
+                            <p class="description">Описание: <%= season.description || "Отсутсвует" %></p>
+                            <p class="view-count">Количество просмотров: <%= season.view_count%></p>
+                            <p class="season-number">Номер сезона: <%= season.unique_number%></p>
+                        </div>
+                    </a>
+                <% }) %>
+            </div>
+            <div class="information-student-all">
+                <button id="openInfoProject">Открыть информацию о проекте</button>
+                <div class="block-student-info">
+                    <div>
+                        <span class="block-student-info-header">Этот проект был выполнен студентом: Петраковым Егором Глебовичем, БСБО-10-21</span>
+                        <button id="closeInfoProject">Закрыть</button>
+                    </div>
+                    <p>Выбор данного проекта был обусловлен моей страстью к сериалу "Аватар: легенда об Аанге". С детства я был его фанатом и пересматривал его несколько раз. Создание данного сайта я рассматриваю как дань уважения к этому потрясающему произведению и возможность предоставить другим поклонникам удобный ресурс для просмотра сериала. Разработка панели администратора позволит мне легко обновлять контент и поддерживать сайт в актуальном состоянии.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/libs/jQuery/jquery-3.7.1.min.js"></script>
+<script src="/js/index/openProjectInformation.js"></script>
+<script src="/js/index/sendRatingAjax.js"></script>
+<script src="/js/index/seasonFilters.js"></script>
+</body>
+</html>

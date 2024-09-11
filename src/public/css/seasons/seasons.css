@@ -1,0 +1,98 @@
+@import "../general/reset.css";
+@import "../general/fonts.css";
+@import "../general/header.css";
+
+
+body{
+    background-color: #ec0d0d;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.series {
+    padding: 20px;
+}
+.seasons-preview-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.season-block {
+    border-radius: 10px;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.46);
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.season-block span{
+    flex: 1;
+}
+
+.season-image {
+    max-width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+.season-info {
+    background-color: rgba(0, 0, 0, 0.72);
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    overflow-y: auto;
+    gap: 30px;
+    max-height: 100%;
+}
+.watch-button {
+    align-self: flex-start;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    background-color: #ff0000;
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s linear;
+}
+.watch-button:hover {
+    background-color: rgba(255, 0, 0, 0.42);
+}
+
+.season-info h3{
+    margin-top: 30px;
+    font-weight: 900;
+    font-size: 40px;
+}
+
+.season-info p{
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.header-season{
+    font-weight: 900;
+    font-size: 60px;
+    color: #ffffff;
+    padding: 10px 10px 10px 0;
+    border-bottom: 4px solid #000000;
+}
+
+.description-seasons-header{
+    padding: 20px 0;
+    font-size: 16px;
+    color: #e1e1e1;
+    font-weight: 300;
+}

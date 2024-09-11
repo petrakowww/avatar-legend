@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сезон - <%= season.season_title %></title>
+    <link rel="stylesheet" href="/css/selected_season/selected.css">
+</head>
+<body>
+<%- include('../patterns_views/header.ejs') %>
+<div class="container">
+    <div class="cover">
+        <% if (season.season_preview_image) { %>
+            <img src="<%= season.season_preview_image %>" alt="Season Cover">
+        <% } else { %>
+            <p>No cover available</p>
+        <% } %>
+    </div>
+    <div class="episodes">
+        <h2><%= season.season_title %></h2>
+        <p><strong>Описание:</strong> <%= season.season_description %></p>
+        <p><strong>Количество серий:</strong> <%= season.season_episode_count %></p>
+        <p><strong>Дата выпуска:</strong> <%= toLocaleDateString(season.season_release, true) %></p>
+        <h3>Список серий:</h3>
+        <ul>
+            <% if (season.episodes && season.episodes.length > 0) { %>
+                <% season.episodes.forEach(function(episode) { %>
+                    <li class="episode">
+                        <a href="/episodes/<%= season.season_id %>&<%= episode.episode_id %>">
+                            <%= episode.episode_title %>
+                        </a>
+                    </li>
+                <% }); %>
+            <% } else { %>
+                <li>Нет доступных серий.</li>
+            <% } %>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+header {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.93);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.5);
+    align-items: center;
+    padding: 20px 30px;
+    font-weight: 300;
+    width: 100%;
+    min-width: 900px;
+    z-index: 1000;
+}
+
+#nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo a{
+    font-weight: 900;
+    color: #ffffff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+
+.logo img {
+    height: 60px;
+    margin-right: 10px;
+}
+
+nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.nav-items{
+    position: relative;
+    width: 100%;
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.auth {
+    display: flex;
+    align-items: center;
+}
+
+.auth .nav-item {
+    margin-left: 15px;
+}
+
+.auth .nav-item a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-item a, .auth .nav-item a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+
+.nav-item a::after, .auth .nav-item a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-item a:hover::after, .auth .nav-item a:hover::after {
+    transform: scaleX(1);
+}
+
+#offset-header-container{
+    padding: 60px;
+}

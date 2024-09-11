@@ -1,0 +1,52 @@
+.rating-serial-avatar {
+    color: #ffffff;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: rgba(18, 18, 18, 0.45);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.rating-serial-avatar p {
+    text-align: left;
+    font-size: 32px;
+}
+
+.rating-serial-avatar div {
+    margin-top: 15px;
+    font-weight: 300;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.rating-serial-avatar select {
+    color: #ffffff;
+    background-color: rgba(32, 18, 8, 0.25);
+    margin-left: 10px;
+    font-size: 16px;
+    padding: 0 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    font-weight: 300;
+}
+
+.rating-serial-avatar select option{
+    background-color: #890f0f;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+#ratingValue{
+    margin-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 900;
+    color: #ffffff;
+    font-size: 40px;
+    text-align: right;
+}
+
+.rating-user{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 300;
+}

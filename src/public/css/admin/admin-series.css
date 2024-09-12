@@ -1,0 +1,40 @@
+
+#blockSerialPanel {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    min-height: 100%;
+}
+
+.previewImageContain{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    gap: 20px;
+}
+
+.previewImageContain h1{
+    font-weight: 900;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.statusSeriesBlock .checkboxStatusSeries{
+    padding: 10px 10px 10px 0;
+    font-weight: 300;
+}
+
+#saveSeriesDetails:hover{
+    background-color: rgba(37, 5, 5, 0.78);
+}
+
+.checkboxStatusSeries{
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+

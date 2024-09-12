@@ -1,0 +1,26 @@
+<header>
+    <div id="nav-container">
+        <div class="logo">
+            <a href="/">
+                <img src="/img/header/AvatarLogo.png" alt="Site Logo"> LAST AVATAR
+            </a>
+        </div>
+        <nav id="nav-items">
+            <div class="nav-item"><a href="/">Главная</a></div>
+            <div class="nav-item"><a href="/seasons">Сезоны</a></div>
+            <div class="nav-item"><a href="/contacts">Обратная связь</a></div>
+            <% if (session && session.user.userType === 'admin') { %>
+                <div class="nav-item"><a href="/admin">Панель управления</a></div>
+            <% } %>
+        </nav>
+        <div class="auth">
+            <% if (!session || session.user.userType === 'observer') { %>
+                <div class="nav-item"><a href="/auth">Войти</a></div>
+            <% } else { %>
+                <div class="nav-item"><a href="/auth/logout">Выйти</a></div>
+            <% } %>
+        </div>
+    </div>
+
+</header>
+<div id="offset-header-container"></div>

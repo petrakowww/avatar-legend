@@ -1,0 +1,81 @@
+@import "../general/reset.css";
+@import "../general/fonts.css";
+@import "../general/header.css";
+
+body {
+    background-color: #ff0808;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    min-height: 100%;
+
+}
+.cover {
+    flex: 1;
+    margin-left: 10px;
+    min-height: 100vh;
+}
+
+.cover img {
+    width: 100%;
+    min-height: 100vh;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.77);
+}
+.episodes {
+    background-color: rgb(0, 0, 0);
+    flex: 2;
+    padding: 10px 30px;
+    font-weight: 300;
+    color: #ffffff;
+    height: 100vh;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.77);
+    margin-right: 10px;
+}
+.episode {
+    margin-bottom: 10px;
+}
+
+.episodes h2, .episodes h3{
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.episodes h2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.episodes h3{
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.episode a{
+    padding: 10px;
+    width: 100%;
+    display: block;
+    background-color: rgba(236, 37, 37, 0.62);
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.episode a:hover{
+    background-color: rgb(213, 37, 37);
+}
+
+.episodes ul{
+    height: 90%;
+    margin-bottom: 30px;
+    overflow-y: auto;
+}
+

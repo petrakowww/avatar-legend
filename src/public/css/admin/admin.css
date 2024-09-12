@@ -1,0 +1,20 @@
+@import "../general/reset.css";
+@import "../general/fonts.css";
+@import "../general/header.css";
+
+@import "admin-images.css";
+@import "admin-button.css";
+@import "admin-series.css";
+@import "admin-seasons.css";
+@import "admin-fields.css";
+@import "admin-info.css";
+@import "admin-episodes.css";
+@import "admin-users-comments.css";
+
+body{
+    background-color: #ec0d0d;
+}
+
+.hidden{
+    display: none;
+}

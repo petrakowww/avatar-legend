@@ -1,0 +1,67 @@
+.admin-control-panel,
+#offset-header-container{
+    background-color: rgba(0, 0, 0, 0.74);
+}
+
+.admin-control-panel{
+    padding: 20px 30px 35px 30px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 10px 9px -5px rgba(0, 0, 0, 0.9);
+    gap: 10px;
+}
+
+.seasonPanel button,
+.admin-control-panel button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #b61515;
+    color: #ffffff;
+    transition: 0.3s linear;
+}
+
+.switchToEpisodes:hover,
+.controlEpisodes button:hover,
+#addNewSeason:hover,
+.deleteSeason:hover,
+.changeSeason:hover,
+.seasonPanel button:hover,
+.admin-control-panel button:hover{
+    background-color: #401212;
+}
+
+.seasonPanel button{
+    background-color: black;
+}
+
+.switchToEpisodes,
+.controlEpisodes button,
+.changeSeason,
+.deleteSeason,
+#addNewSeason,
+#saveSeriesDetails{
+    margin-top: auto;
+    align-self: flex-end;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.53);
+    color: #ffffff;
+    font-weight: 300;
+    transition: 0.3s linear;
+}
+
+.switchToSeason{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.53);
+    color: #ffffff;
+    font-weight: 300;
+    transition: 0.3s linear;
+}
+
+.deleteSeason,
+.switchToEpisodes{
+    background-color: #0995ec;
+    box-shadow: 0 0 10px 0 rgb(0,0,0, 0.6);
+}

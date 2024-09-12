@@ -1,0 +1,16 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Ignore video public
+/src/public/video/
+# Ignore image public
+/src/public/img/
+# Ignore node modules
+/node_modules/
+# Ignore packages
+/package-lock.json
+/package.json
+# Ignore .idea/
+/.idea/

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аватар: легенда об аанге - авторизация</title>
+    <link rel="stylesheet" href="/css/auth/auth.css">
+</head>
+<body>
+<div class="overlay">
+    <div class="container">
+        <div id="authBlock" class="block">
+            <h2>Блок авторизации</h2>
+            <input type="text" id="authUsername" placeholder="Логин или почта" required>
+            <input type="password" id="authPassword" placeholder="Пароль" required>
+            <button id="authSubmit">Авторизоваться</button>
+        </div>
+
+        <div id="registerBlock" class="block" style="display: none;">
+            <h2>Блок регистрации</h2>
+            <input type="text" id="registerUsername" placeholder="Логин" required>
+            <input type="email" id="registerEmail" placeholder="Почта" required>
+            <input type="password" id="registerPassword" placeholder="Пароль" required>
+            <input type="password" id="confirmPassword" placeholder="Повторите пароль" required>
+            <button id="registerSubmit">Зарегистрироваться</button>
+        </div>
+
+        <div id="managementBlock" class="block" style="display: none;">
+            <h2>Блок управления</h2>
+            <input type="text" id="managementHost" placeholder="Host" required>
+            <input type="text" id="managementUsername" placeholder="Пользователь" required>
+            <input type="text" id="managementDatabase" placeholder="База данных" required>
+            <input type="password" id="managementPassword" placeholder="Пароль" required>
+            <button id="managementSubmit">Подключиться</button>
+        </div>
+
+        <div>
+            <button id="showAuthBlock">Авторизация</button>
+            <button id="showRegisterBlock">Регистрация</button>
+            <button id="showManagementBlock">Система управления</button>
+        </div>
+
+        <div class="links">
+            <a href="/">Главная страница</a>
+        </div>
+
+        <div id="information-errors-block">
+
+        </div>
+    </div>
+</div>
+
+<script src="/libs/jQuery/jquery-3.7.1.min.js"></script>
+<script src="/js/auth/createUserAuthentication.js"></script>
+<script src="/js/auth/authenticationUserAjax.js"></script>
+<script src="/js/auth/authenticationAdminAjax.js"></script>
+<script src="/js/auth/utils/displayErrors.js"></script>
+<script src="/js/auth/utils/switchAuthentication.js"></script>
+<script src="/js/auth/utils/disableSubmitButtons.js"></script>
+</body>
+</html>

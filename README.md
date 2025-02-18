@@ -70,10 +70,6 @@
 
 ![LoginPage](./readme-img/auth.png)
 
-**Главная страница (для пользователя):**
-
-![MainPage](./readme-img/main-page.png)
-
 **Сезоны (на главной - часть и на отдельно выделенной странице):**
 
 ![MainPage](./readme-img/select-season-main-page.png)
@@ -90,14 +86,6 @@
 **Комментарии к сериям:**
 
 ![SerieCommentPage](./readme-img/comment-user.png)
-
-**Админ-панель:**
-
-![AdminPanelCallbackPage](./readme-img/edit-callback.png)
-![AdminPanelEditSeasonPage](./readme-img/edit-seasons-video.png)
-![AdminPanelSeasonsPage](./readme-img/edit-seasons.png)
-![AdminPanelPreviewPage](./readme-img/edit-preview.png)
-![AdminPanelPreviewPage](./readme-img/admin-comment.png)
 
 **404 страница:**
 

@@ -82,11 +82,3 @@
 **Выбранная серия сезона:**
 
 ![SerieInfoPage](./readme-img/serie.png)
-
-**Комментарии к сериям:**
-
-![SerieCommentPage](./readme-img/comment-user.png)
-
-**404 страница:**
-
-![404page](./readme-img/404.png)
